@@ -21,7 +21,57 @@
 //
 // ------------------------------------------------------------------------
 
-struct GherkinFormatter {
+import Foundation
 
-    var text = "Feature: Formatting Gherkin features"
+public struct GherkinFormatter {
+
+	public init() {
+		
+	}
+	
+	public func formatTable(_ lines: [String]) -> [String] {
+		if lines.count == 0 {
+			return lines
+		}
+		
+		var newLines = [String]()
+
+		var maxLength = 0
+		for line in lines {
+			let lineValue = line.replace("|", with: "").trim()
+			let length = lineValue.characters.count
+
+			if length > maxLength {
+				maxLength = length
+			}
+		}
+		
+		for line in lines {
+			let lineValue = line.replace("|", with: "").trim()
+			let length = lineValue.characters.count
+			
+			if length < maxLength {
+				let space = String(repeating: " ", count: maxLength - length)
+				newLines.append("| \(lineValue)\(space) |")
+			} else {
+				newLines.append("| \(lineValue) |")
+			}
+		}
+		return newLines
+	}
 }
+
+extension String {
+	func replace(_ text: String, with replace: String) -> String {
+		return self.asNSString().replacingOccurrences(of: text, with: replace)
+	}
+	
+	func trim() -> String {
+		return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+	}
+
+	func asNSString() -> NSString {
+		return NSString(string: self)
+	}
+}
+

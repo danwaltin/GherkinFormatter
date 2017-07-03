@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		OBJ_20 /* GherkinFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* GherkinFormatter.swift */; };
-		OBJ_27 /* GherkinFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* GherkinFormatterTests.swift */; };
+		OBJ_27 /* FormatTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* FormatTableTests.swift */; };
 		OBJ_29 /* GherkinFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GherkinFormatter.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		373C2EEB1F0937CE00CB1D36 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		OBJ_11 /* GherkinFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GherkinFormatterTests.swift; sourceTree = "<group>"; };
+		OBJ_11 /* FormatTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTableTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* GherkinFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GherkinFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_14 /* GherkinFormatterTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GherkinFormatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		OBJ_10 /* GherkinFormatterTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_11 /* GherkinFormatterTests.swift */,
+				OBJ_11 /* FormatTableTests.swift */,
 			);
 			name = GherkinFormatterTests;
 			path = Tests/GherkinFormatterTests;
@@ -171,7 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_27 /* GherkinFormatterTests.swift in Sources */,
+				OBJ_27 /* FormatTableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
