@@ -34,7 +34,9 @@ class FormatTableTests: XCTestCase {
 		then_shouldReturn([])
     }
 	
-	func test_onlyHeaderRow() {
+	// MARK:- one column
+	
+	func test_oneColumn_onlyHeaderRow() {
 		when_formattingTable([
 			"| header |"])
 		
@@ -74,7 +76,37 @@ class FormatTableTests: XCTestCase {
 			"| second row value |"])
 	}
 
-	func test_oneColumnOneRow_rowIndentedWithSpace() {
+	// MARK:- two columns
+
+	func test_twoColumnsTwoRows_equalLengths() {
+		when_formattingTable([
+			"| equal|equal |",
+			"|equal | equal|"])
+		
+		then_shouldReturn([
+			"| equal | equal |",
+			"| equal | equal |"])
+	}
+
+	// MARK:- three columns
+
+	func test_threeColumns_twoRows() {
+		when_formattingTable([
+			"| header 1 | header 2 |h3 longest |",
+			"| r1c1| r1c2| r1c3|",
+			"|r2c1|r2c2 longest|r2c3|",
+			"|r3c1 longest |r3c2|r3c3|"])
+		
+		then_shouldReturn([
+			"| header 1     | header 2     | h3 longest |",
+			"| r1c1         | r1c2         | r1c3       |",
+			"| r2c1         | r2c2 longest | r2c3       |",
+			"| r3c1 longest | r3c2         | r3c3       |"])
+	}
+
+	// MARK:- indentation
+
+	func _test_oneColumnOneRow_rowIndentedWithSpace() {
 		when_formattingTable([
 			"| header |",
 			" | row |"])
@@ -114,6 +146,10 @@ class FormatTableTests: XCTestCase {
 			"\t| row    |"])
 	}
 
+	// MARK: - handle different number of columns in the header and rows
+	
+	// MARK: - helpers
+	
 	private func when_formattingTable(_ lines: [String]) {
 		actualFormattedText = GherkinFormatter().formatTable(lines)
 	}

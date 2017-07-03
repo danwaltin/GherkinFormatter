@@ -25,6 +25,8 @@ import Foundation
 
 public struct GherkinFormatter {
 
+	let columnSeparator = "|"
+	
 	public init() {
 		
 	}
@@ -36,28 +38,74 @@ public struct GherkinFormatter {
 		
 		var newLines = [String]()
 
-		var maxLength = 0
-		for line in lines {
-			let lineValue = line.replace("|", with: "").trim()
-			let length = lineValue.characters.count
-
-			if length > maxLength {
-				maxLength = length
-			}
-		}
+		let columnMaxLengths = columnWidths(lines)
 		
 		for line in lines {
-			let lineValue = line.replace("|", with: "").trim()
-			let length = lineValue.characters.count
-			
-			if length < maxLength {
-				let space = String(repeating: " ", count: maxLength - length)
-				newLines.append("| \(lineValue)\(space) |")
-			} else {
-				newLines.append("| \(lineValue) |")
-			}
+			newLines.append(formattedLine(original: line, columnWidths: columnMaxLengths))
 		}
+
 		return newLines
+	}
+
+	private func formattedLine(original: String, columnWidths: [Int: Int]) -> String {
+		let lineValues = cellValuesFor(row: original)
+		
+		var newLine = columnSeparator
+		
+		var col = 0
+		for lineValue in lineValues {
+			
+			let formatted = formattedCellValue(original: lineValue, col: col, columnWidths: columnWidths)
+			newLine += " \(formatted) \(columnSeparator)"
+			col += 1
+		}
+
+		return newLine
+	}
+	
+	private func formattedCellValue(original: String, col: Int, columnWidths: [Int: Int]) -> String {
+		let length = original.characters.count
+		
+		let space = length < columnWidths[col]! ? String(repeating: " ", count: columnWidths[col]! - length) : ""
+		
+		return "\(original)\(space)"
+	}
+	
+ 	private func columnWidths(_ lines: [String]) -> [Int: Int] {
+		var columnMaxLengths = [Int: Int]()
+		
+		var row = 0
+		for line in lines {
+			let cellLengths = cellLengthsFor(row: line)
+			
+			for col in 0..<cellLengths.count {
+				if row == 0 {
+					columnMaxLengths[col] = cellLengths[col]
+				} else {
+					if cellLengths[col] > columnMaxLengths[col]! {
+						columnMaxLengths[col] = cellLengths[col]
+					}
+				}
+			}
+			
+			row += 1
+		}
+
+		return columnMaxLengths
+	}
+	
+	private func cellLengthsFor(row: String) -> [Int] {
+		let values = cellValuesFor(row: row)
+		
+		return values.map{ $0.characters.count}
+	}
+	
+	private func cellValuesFor(row: String) -> [String] {
+		var values = row.trim().asNSString().components(separatedBy: columnSeparator).map{$0.trim()}
+		values.remove(at: 0)
+		values.remove(at: values.count-1)
+		
+		return values
 	}
 }
 
