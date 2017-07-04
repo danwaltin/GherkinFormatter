@@ -126,7 +126,7 @@ class FormatTableTests: XCTestCase {
 			" | row    |"])
 	}
 
-	func _test_headerIndentedWithTwoSpaces_shouldKeepIndentation() {
+	func test_headerIndentedWithTwoSpaces_shouldKeepIndentation() {
 		when_formattingTable([
 			"  | header |",
 			"| row |"])
@@ -136,7 +136,7 @@ class FormatTableTests: XCTestCase {
 			"  | row    |"])
 	}
 
-	func _test_headerIndentedWithOneTab_shouldKeepIndentation() {
+	func test_headerIndentedWithOneTab_shouldKeepIndentation() {
 		when_formattingTable([
 			"\t| header |",
 			"| row |"])

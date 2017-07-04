@@ -37,17 +37,20 @@ public struct GherkinFormatter {
 		}
 		
 		let columnWidths = self.columnWidths(lines)
+		let indentation = rowIndentation(lines.first!)
 		
 		return lines.map { formattedLine(
 			original: $0,
+			indentation:  indentation,
 			columnWidths: columnWidths)}
 	}
 
-	private func formattedLine(original: String, columnWidths: [Int: Int]) -> String {
+	private func formattedLine(original: String, indentation: String, columnWidths: [Int: Int]) -> String {
 		let cellValues = cellValuesFor(row: original)
 		let formattedCellValues = cellValues.enumerated().map{ formattedCellValue(original: $1, col: $0, columnWidths: columnWidths)}
 
-		return formattedCellValues.reduce(columnSeparator) { x, y in  "\(x) \(y) \(columnSeparator)"}
+		let start = indentation + columnSeparator
+		return formattedCellValues.reduce(start) { x, y in  "\(x) \(y) \(columnSeparator)"}
 	}
 	
 	private func formattedCellValue(original: String, col: Int, columnWidths: [Int: Int]) -> String {
@@ -56,6 +59,13 @@ public struct GherkinFormatter {
 		let space = length < columnWidths[col]! ? String(repeating: " ", count: columnWidths[col]! - length) : ""
 		
 		return "\(original)\(space)"
+	}
+	
+	// if line == "| hello |", return ""
+	// if line == "  | hello |", return "  "
+	//
+	private func rowIndentation(_ line: String) -> String {
+		return line.substring(to: line.index(of: "|")!)
 	}
 	
  	private func columnWidths(_ lines: [String]) -> [Int: Int] {
@@ -111,4 +121,32 @@ extension String {
 		return NSString(string: self)
 	}
 }
+
+extension String {
+	func index(of string: String, options: CompareOptions = .literal) -> Index? {
+		return range(of: string, options: options)?.lowerBound
+	}
+//	func endIndex(of string: String, options: CompareOptions = .literal) -> Index? {
+//		return range(of: string, options: options)?.upperBound
+//	}
+//	func indexes(of string: String, options: CompareOptions = .literal) -> [Index] {
+//		var result: [Index] = []
+//		var start = startIndex
+//		while let range = range(of: string, options: options, range: start..<endIndex) {
+//			result.append(range.lowerBound)
+//			start = range.upperBound
+//		}
+//		return result
+//	}
+//	func ranges(of string: String, options: CompareOptions = .literal) -> [Range<Index>] {
+//		var result: [Range<Index>] = []
+//		var start = startIndex
+//		while let range = range(of: string, options: options, range: start..<endIndex) {
+//			result.append(range)
+//			start = range.upperBound
+//		}
+//		return result
+//	}
+}
+
 
