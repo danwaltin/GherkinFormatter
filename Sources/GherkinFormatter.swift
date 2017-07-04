@@ -35,16 +35,60 @@ public struct GherkinFormatter {
 		if lines.count == 0 {
 			return lines
 		}
+
+		let tableLineIndices = self.tableLineIndices(lines)
+		if tableLineIndices.count == 0 {
+			return lines
+		}
 		
-		let columnWidths = self.columnWidths(lines)
-		let indentation = rowIndentation(lines.first!)
+		let tableLines = tableLineIndices.map{lines[$0]}
 		
-		return lines.map { formattedLine(
+		let columnWidths = self.columnWidths(tableLines)
+		let indentation = rowIndentation(tableLines.first!)
+		
+		var formattedTableLines = tableLines.map { formattedLine(
 			original: $0,
 			indentation:  indentation,
 			columnWidths: columnWidths)}
+		
+		if formattedTableLines.count == lines.count {
+			return formattedTableLines
+		}
+		
+		for i in formattedTableLines.count..<lines.count {
+			formattedTableLines.append(lines[i])
+		}
+		
+		return formattedTableLines
 	}
 
+	private func tableLineIndices(_ lines: [String]) -> [Int] {
+
+		var indices = [Int]()
+	
+		for i in 0..<lines.count {
+		
+			if !isTableLine(lines[i]) {
+				break
+			}
+			indices.append(i)
+		}
+		
+		return indices
+	}
+
+	
+	private func isTableLine(_ line: String) -> Bool {
+		let trimmed = line.trim()
+		if trimmed == "" {
+			return false
+		}
+		let beginsWithColumnSeparator = trimmed.substring(to: trimmed.index(trimmed.startIndex, offsetBy:1)) == columnSeparator
+		let endsWithColumnSeparator = trimmed.substring(from: trimmed.index(trimmed.endIndex, offsetBy:-1)) == columnSeparator
+
+		return beginsWithColumnSeparator && endsWithColumnSeparator
+	}
+	
 	private func formattedLine(original: String, indentation: String, columnWidths: [Int: Int]) -> String {
 		let cellValues = cellValuesFor(row: original)
 		let formattedCellValues = cellValues.enumerated().map{ formattedCellValue(original: $1, col: $0, columnWidths: columnWidths)}
@@ -69,15 +113,14 @@ public struct GherkinFormatter {
 	// if line == "  | hello |", return "  "
 	//
 	private func rowIndentation(_ line: String) -> String {
-		return line.substring(to: line.index(of: "|")!)
+		return line.substring(to: line.index(of: columnSeparator)!)
 	}
 	
  	private func columnWidths(_ lines: [String]) -> [Int: Int] {
 		var columnMaxLengths = [Int: Int]()
 		
-		var row = 0
-		for line in lines {
-			let cellLengths = cellLengthsFor(row: line)
+		for row in 0..<lines.count {
+			let cellLengths = cellLengthsFor(row: lines[row])
 			
 			for col in 0..<cellLengths.count {
 				if row == 0 {
@@ -88,8 +131,6 @@ public struct GherkinFormatter {
 					}
 				}
 			}
-			
-			row += 1
 		}
 
 		return columnMaxLengths

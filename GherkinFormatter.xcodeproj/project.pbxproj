@@ -10,6 +10,7 @@
 		373C2EED1F0BE35100CB1D36 /* IndentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C2EEC1F0BE35100CB1D36 /* IndentationTests.swift */; };
 		373C2EEF1F0BE37800CB1D36 /* FormattingTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C2EEE1F0BE37800CB1D36 /* FormattingTestsBase.swift */; };
 		373C2EF11F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C2EF01F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift */; };
+		373C2EF31F0C0C1E00CB1D36 /* NonTableRowsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C2EF21F0C0C1D00CB1D36 /* NonTableRowsTests.swift */; };
 		OBJ_20 /* GherkinFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* GherkinFormatter.swift */; };
 		OBJ_27 /* FormatTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* FormatTableTests.swift */; };
 		OBJ_29 /* GherkinFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GherkinFormatter.framework */; };
@@ -30,6 +31,7 @@
 		373C2EEC1F0BE35100CB1D36 /* IndentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentationTests.swift; sourceTree = "<group>"; };
 		373C2EEE1F0BE37800CB1D36 /* FormattingTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattingTestsBase.swift; sourceTree = "<group>"; };
 		373C2EF01F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentNumberOfColumnsTests.swift; sourceTree = "<group>"; };
+		373C2EF21F0C0C1D00CB1D36 /* NonTableRowsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTableRowsTests.swift; sourceTree = "<group>"; };
 		OBJ_11 /* FormatTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTableTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* GherkinFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GherkinFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_14 /* GherkinFormatterTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GherkinFormatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,7 @@
 				OBJ_11 /* FormatTableTests.swift */,
 				373C2EEC1F0BE35100CB1D36 /* IndentationTests.swift */,
 				373C2EF01F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift */,
+				373C2EF21F0C0C1D00CB1D36 /* NonTableRowsTests.swift */,
 			);
 			name = GherkinFormatterTests;
 			path = Tests/GherkinFormatterTests;
@@ -181,6 +184,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_27 /* FormatTableTests.swift in Sources */,
+				373C2EF31F0C0C1E00CB1D36 /* NonTableRowsTests.swift in Sources */,
 				373C2EEF1F0BE37800CB1D36 /* FormattingTestsBase.swift in Sources */,
 				373C2EED1F0BE35100CB1D36 /* IndentationTests.swift in Sources */,
 				373C2EF11F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift in Sources */,
