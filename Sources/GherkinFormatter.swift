@@ -54,6 +54,10 @@ public struct GherkinFormatter {
 	}
 	
 	private func formattedCellValue(original: String, col: Int, columnWidths: [Int: Int]) -> String {
+		if col >= columnWidths.count {
+			return original
+		}
+		
 		let length = original.characters.count
 		
 		let space = length < columnWidths[col]! ? String(repeating: " ", count: columnWidths[col]! - length) : ""
@@ -79,7 +83,7 @@ public struct GherkinFormatter {
 				if row == 0 {
 					columnMaxLengths[col] = cellLengths[col]
 				} else {
-					if cellLengths[col] > columnMaxLengths[col]! {
+					if col < columnMaxLengths.count && cellLengths[col] > columnMaxLengths[col]! {
 						columnMaxLengths[col] = cellLengths[col]
 					}
 				}
@@ -126,27 +130,6 @@ extension String {
 	func index(of string: String, options: CompareOptions = .literal) -> Index? {
 		return range(of: string, options: options)?.lowerBound
 	}
-//	func endIndex(of string: String, options: CompareOptions = .literal) -> Index? {
-//		return range(of: string, options: options)?.upperBound
-//	}
-//	func indexes(of string: String, options: CompareOptions = .literal) -> [Index] {
-//		var result: [Index] = []
-//		var start = startIndex
-//		while let range = range(of: string, options: options, range: start..<endIndex) {
-//			result.append(range.lowerBound)
-//			start = range.upperBound
-//		}
-//		return result
-//	}
-//	func ranges(of string: String, options: CompareOptions = .literal) -> [Range<Index>] {
-//		var result: [Range<Index>] = []
-//		var start = startIndex
-//		while let range = range(of: string, options: options, range: start..<endIndex) {
-//			result.append(range)
-//			start = range.upperBound
-//		}
-//		return result
-//	}
 }
 
 

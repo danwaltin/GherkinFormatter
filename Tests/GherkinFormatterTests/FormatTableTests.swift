@@ -21,12 +21,9 @@
 //
 // ------------------------------------------------------------------------
 
-import XCTest
-@testable import GherkinFormatter
-
-class FormatTableTests: XCTestCase {
+class FormatTableTests: FormattingTestsBase {
 	
-	private var actualFormattedText = [String]()
+	// MARK:- empty
 	
 	func test_emptyString_shouldReturnEmptyString() {
 		when_formattingTable([])
@@ -104,57 +101,7 @@ class FormatTableTests: XCTestCase {
 			"| r3c1 longest | r3c2         | r3c3       |"])
 	}
 
-	// MARK:- indentation
-
-	func _test_oneColumnOneRow_rowIndentedWithSpace() {
-		when_formattingTable([
-			"| header |",
-			" | row |"])
-		
-		then_shouldReturn([
-			"| header |",
-			"| row    |"])
-	}
-
-	func _test_headerIndentedWithOneSpace_shouldKeepIndentation() {
-		when_formattingTable([
-			" | header |",
-			"| row |"])
-		
-		then_shouldReturn([
-			" | header |",
-			" | row    |"])
-	}
-
-	func test_headerIndentedWithTwoSpaces_shouldKeepIndentation() {
-		when_formattingTable([
-			"  | header |",
-			"| row |"])
-		
-		then_shouldReturn([
-			"  | header |",
-			"  | row    |"])
-	}
-
-	func test_headerIndentedWithOneTab_shouldKeepIndentation() {
-		when_formattingTable([
-			"\t| header |",
-			"| row |"])
-		
-		then_shouldReturn([
-			"\t| header |",
-			"\t| row    |"])
-	}
 
 	// MARK: - handle different number of columns in the header and rows
 	
-	// MARK: - helpers
-	
-	private func when_formattingTable(_ lines: [String]) {
-		actualFormattedText = GherkinFormatter().formatTable(lines)
-	}
-	
-	private func then_shouldReturn(_ expected: [String]) {
-		XCTAssertEqual(actualFormattedText, expected)
-	}
 }

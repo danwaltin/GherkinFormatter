@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		373C2EED1F0BE35100CB1D36 /* IndentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C2EEC1F0BE35100CB1D36 /* IndentationTests.swift */; };
+		373C2EEF1F0BE37800CB1D36 /* FormattingTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C2EEE1F0BE37800CB1D36 /* FormattingTestsBase.swift */; };
+		373C2EF11F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C2EF01F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift */; };
 		OBJ_20 /* GherkinFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* GherkinFormatter.swift */; };
 		OBJ_27 /* FormatTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* FormatTableTests.swift */; };
 		OBJ_29 /* GherkinFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GherkinFormatter.framework */; };
@@ -24,6 +27,9 @@
 
 /* Begin PBXFileReference section */
 		373C2EEB1F0937CE00CB1D36 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		373C2EEC1F0BE35100CB1D36 /* IndentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentationTests.swift; sourceTree = "<group>"; };
+		373C2EEE1F0BE37800CB1D36 /* FormattingTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattingTestsBase.swift; sourceTree = "<group>"; };
+		373C2EF01F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentNumberOfColumnsTests.swift; sourceTree = "<group>"; };
 		OBJ_11 /* FormatTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTableTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* GherkinFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GherkinFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_14 /* GherkinFormatterTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GherkinFormatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +59,10 @@
 		OBJ_10 /* GherkinFormatterTests */ = {
 			isa = PBXGroup;
 			children = (
+				373C2EEE1F0BE37800CB1D36 /* FormattingTestsBase.swift */,
 				OBJ_11 /* FormatTableTests.swift */,
+				373C2EEC1F0BE35100CB1D36 /* IndentationTests.swift */,
+				373C2EF01F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift */,
 			);
 			name = GherkinFormatterTests;
 			path = Tests/GherkinFormatterTests;
@@ -172,6 +181,9 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_27 /* FormatTableTests.swift in Sources */,
+				373C2EEF1F0BE37800CB1D36 /* FormattingTestsBase.swift in Sources */,
+				373C2EED1F0BE35100CB1D36 /* IndentationTests.swift in Sources */,
+				373C2EF11F0BE48000CB1D36 /* DifferentNumberOfColumnsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
