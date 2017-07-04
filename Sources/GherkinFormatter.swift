@@ -36,31 +36,18 @@ public struct GherkinFormatter {
 			return lines
 		}
 		
-		var newLines = [String]()
-
-		let columnMaxLengths = columnWidths(lines)
+		let columnWidths = self.columnWidths(lines)
 		
-		for line in lines {
-			newLines.append(formattedLine(original: line, columnWidths: columnMaxLengths))
-		}
-
-		return newLines
+		return lines.map { formattedLine(
+			original: $0,
+			columnWidths: columnWidths)}
 	}
 
 	private func formattedLine(original: String, columnWidths: [Int: Int]) -> String {
-		let lineValues = cellValuesFor(row: original)
-		
-		var newLine = columnSeparator
-		
-		var col = 0
-		for lineValue in lineValues {
-			
-			let formatted = formattedCellValue(original: lineValue, col: col, columnWidths: columnWidths)
-			newLine += " \(formatted) \(columnSeparator)"
-			col += 1
-		}
+		let cellValues = cellValuesFor(row: original)
+		let formattedCellValues = cellValues.enumerated().map{ formattedCellValue(original: $1, col: $0, columnWidths: columnWidths)}
 
-		return newLine
+		return formattedCellValues.reduce(columnSeparator) { x, y in  "\(x) \(y) \(columnSeparator)"}
 	}
 	
 	private func formattedCellValue(original: String, col: Int, columnWidths: [Int: Int]) -> String {
@@ -101,6 +88,8 @@ public struct GherkinFormatter {
 	}
 	
 	private func cellValuesFor(row: String) -> [String] {
+		// row is in format "| x | y | z | ab c |"
+		
 		var values = row.trim().asNSString().components(separatedBy: columnSeparator).map{$0.trim()}
 		values.remove(at: 0)
 		values.remove(at: values.count-1)
