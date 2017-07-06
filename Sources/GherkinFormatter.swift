@@ -31,6 +31,13 @@ public struct GherkinFormatter {
 		
 	}
 	
+	public func tableLines(atIndex lineIndex: Int, fromLines lines: [String]) -> [Int] {
+		if lineIndex >= lines.count || lineIndex < 0 {
+			return []
+		}
+		return lines.enumerated().map{(index, value) in index}
+	}
+	
 	public func formatTable(_ lines: [String]) -> [String] {
 		if lines.count == 0 {
 			return lines
