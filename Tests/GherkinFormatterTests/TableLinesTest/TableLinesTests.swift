@@ -171,7 +171,7 @@ class TableLinesTests : XCTestCase {
 		then_shouldReturn([])
 		
 		when_getTableLines(forIndex: 1)
-		then_shouldReturn([0])
+		then_shouldReturn([])
 		
 		when_getTableLines(forIndex: 2)
 		then_shouldReturn([2])

@@ -35,7 +35,35 @@ public struct GherkinFormatter {
 		if lineIndex >= lines.count || lineIndex < 0 {
 			return []
 		}
-		return lines.enumerated().map{(index, value) in index}
+		
+		
+		if !isTableLine(lines[lineIndex]) {
+			return []
+		}
+
+		var tableLineIndices = [Int]()
+		// first, check lines above
+		if lineIndex > 0 {
+			var i = lineIndex - 1
+			while i >= 0 {
+				if !isTableLine(lines[i]) {
+					break
+				}
+				tableLineIndices.append(i)
+				i -= 1
+			}
+		}
+		
+		// then check lineIndex and below
+		for i in lineIndex..<lines.count {
+			if !isTableLine(lines[i]) {
+				break
+			}
+			tableLineIndices.append(i)
+		}
+		
+		tableLineIndices.sort()
+		return tableLineIndices
 	}
 	
 	public func formatTable(_ lines: [String]) -> [String] {
