@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		377A93AE1F7ECD2100B9E369 /* GherkinFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A93AD1F7ECCFF00B9E369 /* GherkinFormatter.swift */; };
 		37CD67C41F0D1FA60057FF1B /* DifferentNumberOfColumnsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD67BF1F0D1FA60057FF1B /* DifferentNumberOfColumnsTests.swift */; };
 		37CD67C51F0D1FA60057FF1B /* FormatTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD67C01F0D1FA60057FF1B /* FormatTableTests.swift */; };
 		37CD67C61F0D1FA60057FF1B /* FormattingTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD67C11F0D1FA60057FF1B /* FormattingTestsBase.swift */; };
 		37CD67C71F0D1FA60057FF1B /* IndentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD67C21F0D1FA60057FF1B /* IndentationTests.swift */; };
 		37CD67C81F0D1FA60057FF1B /* NonTableRowsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD67C31F0D1FA60057FF1B /* NonTableRowsTests.swift */; };
 		37CD67CB1F0D20310057FF1B /* TableLinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD67CA1F0D20310057FF1B /* TableLinesTests.swift */; };
-		OBJ_20 /* GherkinFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* GherkinFormatter.swift */; };
 		OBJ_29 /* GherkinFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GherkinFormatter.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		373C2EEB1F0937CE00CB1D36 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		377A93AD1F7ECCFF00B9E369 /* GherkinFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GherkinFormatter.swift; sourceTree = "<group>"; };
 		37CD67BF1F0D1FA60057FF1B /* DifferentNumberOfColumnsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentNumberOfColumnsTests.swift; sourceTree = "<group>"; };
 		37CD67C01F0D1FA60057FF1B /* FormatTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatTableTests.swift; sourceTree = "<group>"; };
 		37CD67C11F0D1FA60057FF1B /* FormattingTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattingTestsBase.swift; sourceTree = "<group>"; };
@@ -36,9 +37,8 @@
 		37CD67C31F0D1FA60057FF1B /* NonTableRowsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTableRowsTests.swift; sourceTree = "<group>"; };
 		37CD67CA1F0D20310057FF1B /* TableLinesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableLinesTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* GherkinFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GherkinFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_14 /* GherkinFormatterTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GherkinFormatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_14 /* GherkinFormatterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = GherkinFormatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_8 /* GherkinFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GherkinFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		377A93AC1F7ECCFF00B9E369 /* GherkinFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				377A93AD1F7ECCFF00B9E369 /* GherkinFormatter.swift */,
+			);
+			path = GherkinFormatter;
+			sourceTree = "<group>";
+		};
 		37CD67BE1F0D1FA60057FF1B /* FormatTableTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +121,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* GherkinFormatter.swift */,
+				377A93AC1F7ECCFF00B9E369 /* GherkinFormatter */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -169,6 +177,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					OBJ_15 = {
+						LastSwiftMigration = 0900;
+					};
+					OBJ_22 = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "GherkinFormatter" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -193,7 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_20 /* GherkinFormatter.swift in Sources */,
+				377A93AE1F7ECD2100B9E369 /* GherkinFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +254,8 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = GherkinFormatter;
 			};
 			name = Debug;
@@ -259,6 +277,8 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = GherkinFormatter;
 			};
 			name = Release;
@@ -266,6 +286,7 @@
 		OBJ_24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -276,6 +297,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = GherkinFormatterTests;
 			};
 			name = Debug;
@@ -283,6 +306,7 @@
 		OBJ_25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -293,6 +317,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = GherkinFormatterTests;
 			};
 			name = Release;

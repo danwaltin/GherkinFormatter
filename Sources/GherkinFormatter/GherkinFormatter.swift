@@ -118,8 +118,9 @@ public struct GherkinFormatter {
 		if trimmed == "" {
 			return false
 		}
-		let beginsWithColumnSeparator = trimmed.substring(to: trimmed.index(trimmed.startIndex, offsetBy:1)) == columnSeparator
-		let endsWithColumnSeparator = trimmed.substring(from: trimmed.index(trimmed.endIndex, offsetBy:-1)) == columnSeparator
+
+		let beginsWithColumnSeparator = trimmed.prefix(upTo: trimmed.index(trimmed.startIndex, offsetBy:1)) == columnSeparator
+		let endsWithColumnSeparator = trimmed[trimmed.index(trimmed.endIndex, offsetBy:-1)..<trimmed.endIndex] == columnSeparator
 
 		return beginsWithColumnSeparator && endsWithColumnSeparator
 	}
@@ -148,7 +149,8 @@ public struct GherkinFormatter {
 	// if line == "  | hello |", return "  "
 	//
 	private func rowIndentation(_ line: String) -> String {
-		return line.substring(to: line.index(of: columnSeparator)!)
+		let substring = line.prefix(upTo: line.index(of: columnSeparator)!)
+		return String(describing: substring)
 	}
 	
  	private func columnWidths(_ lines: [String]) -> [Int: Int] {
