@@ -138,7 +138,7 @@ public struct GherkinFormatter {
 			return original
 		}
 		
-		let length = original.characters.count
+		let length = original.count
 		
 		let space = length < columnWidths[col]! ? String(repeating: " ", count: columnWidths[col]! - length) : ""
 		
@@ -176,7 +176,7 @@ public struct GherkinFormatter {
 	private func cellLengthsFor(row: String) -> [Int] {
 		let values = cellValuesFor(row: row)
 		
-		return values.map{ $0.characters.count}
+		return values.map{ $0.count}
 	}
 	
 	private func cellValuesFor(row: String) -> [String] {
