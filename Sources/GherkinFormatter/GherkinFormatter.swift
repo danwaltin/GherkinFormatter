@@ -111,7 +111,6 @@ public struct GherkinFormatter {
 		
 		return indices
 	}
-
 	
 	private func isTableLine(_ line: String) -> Bool {
 		let trimmed = line.trim()
@@ -182,7 +181,7 @@ public struct GherkinFormatter {
 	private func cellValuesFor(row: String) -> [String] {
 		// row is in format "| x | y | z | ab c |"
 		
-		var values = row.trim().asNSString().components(separatedBy: columnSeparator).map{$0.trim()}
+		var values = row.trim().components(separatedBy: columnSeparator).map{$0.trim()}
 		values.remove(at: 0)
 		values.remove(at: values.count-1)
 		
@@ -191,16 +190,8 @@ public struct GherkinFormatter {
 }
 
 extension String {
-	func replace(_ text: String, with replace: String) -> String {
-		return self.asNSString().replacingOccurrences(of: text, with: replace)
-	}
-	
 	func trim() -> String {
 		return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
-	}
-
-	func asNSString() -> NSString {
-		return NSString(string: self)
 	}
 }
 

@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.3
 // ------------------------------------------------------------------------
 // Copyright 2017 Dan Waltin
 //
@@ -26,7 +26,17 @@ import PackageDescription
 
 let package = Package(
 	name: "GherkinFormatter",
+	products: [
+		.library(
+			name: "GherkinFormatter",
+			targets: ["GherkinFormatter"])
+	],
 	targets: [
-		.target(name: "GherkinFormatter"),
-		.testTarget(name: "GherkinFormatterTests", dependencies: ["GherkinFormatter"])]
+		.target(
+			name: "GherkinFormatter",
+			dependencies: []),
+		.testTarget(
+			name: "GherkinFormatterTests",
+			dependencies: ["GherkinFormatter"])
+	]
 )
